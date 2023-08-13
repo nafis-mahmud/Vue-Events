@@ -24,10 +24,13 @@
       <p>Result: {{ counter }}</p>
       <input
         type="text"
+        v-on:blind="name"
         v-on:input="setName"
         v-on:keyup.enter="confirmedInput"
       />
-      <p>Your Name: {{ confirmedName }}</p>
+      
+      <button v-on:click="resetInput">reset</button>
+      <p>Your Name: {{ outputFullname }}</p>
 
       <form v-on:submit.prevent="formSubmit">
         <input type="text" />
