@@ -1,43 +1,99 @@
+// const app = Vue.createApp({
+//   data() {
+//     return {
+//       counter: 0,
+//       name: '',
+//       confirmedName: '',
+//       lastName: ''
+
+//     };
+//   },
+
+//   methods: {
+//     outputFullname(){
+//       if (this.name === ''){
+//         return '';
+//       }
+//       return this.name +  ' ' + 'mahmud';
+//     },
+//     confirmedInput() {
+//       this.confirmedName = this.name;
+//     },
+//     formSubmit(){
+//       alert("Submitted");
+//     },
+//     setName(event){
+//       this.name = event.target.value;
+//     },
+//     add(num){
+//       this.counter = this.counter +num;
+//     },
+//     reduce(num){
+//       this.counter = this.counter -num;
+//     },
+//     reset(){
+//       this.counter = 0;
+//     },
+//     resetInput(){
+//       this.name = '';
+//     }
+//   }
+// });
+
+// app.mount('#events');
+
+//-----------------------------
+
 const app = Vue.createApp({
   data() {
     return {
       counter: 0,
       name: '',
-      confirmedName: ''
+      lastName: '',
+      // fullname: '',
     };
   },
-
-  methods: {
-    outputFullname(){
-      if (this.name === ''){
+  watch: {
+    counter(value) {
+      if (value > 50) {
+        const that = this;
+        setTimeout(function () {
+          that.counter = 0;
+        }, 2000);
+      }
+    },
+  },
+  computed: {
+    fullname() {
+      console.log('Running again...');
+      if (this.name === '' || this.lastName === '') {
         return '';
       }
-      return this.name +  ' ' + 'mahmud';
+      return this.name + ' ' + this.lastName;
     },
-    confirmedInput() {
-      this.confirmedName = this.name;
+  },
+  methods: {
+    outputFullname() {
+      console.log('Running again...');
+      if (this.name === '') {
+        return '';
+      }
+      return this.name + ' ' + 'Schwarzmüller';
     },
-    formSubmit(){
-      alert("Submitted");
-    },
-    setName(event){
+    setName(event) {
       this.name = event.target.value;
     },
-    add(num){
-      this.counter = this.counter +num;
+    add(num) {
+      this.counter = this.counter + num;
     },
-    reduce(num){
-      this.counter = this.counter -num;
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
     },
-    reset(){
-      this.counter = 0;
-    },
-    resetInput(){
+    resetInput() {
       this.name = '';
-    }
-  }
+    },
+  },
 });
 
 app.mount('#events');
-
-
